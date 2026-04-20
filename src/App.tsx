@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router';
 
-import Equipo from './Equipo'
-import Favoritos from './Favoritos'
-import Home from './Home'
+
 import Informativa from './Informativa'
 import Original from './Original'
 import Usuario from './Usuarios'
+import Home from './Home'
+import Favoritos from './Favoritos'
+import Equipo from './Equipo';
+import { EquiposContext, equiposMap } from "./EquiposContext";
 
 import './App.css'
 
@@ -13,6 +15,7 @@ function App() {
 
   return (
     <>
+    <EquiposContext.Provider value={equiposMap}>
     <Router>
       <nav className="c-menu">
         <Link to="/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDy9mBtyJWUPLRobv__N2OwHYdiKAWarKroQ&s" /><p>Home</p></Link>
@@ -31,6 +34,7 @@ function App() {
         <Route path="/equipo/:equipo" element={<Equipo /> } />
       </Routes>
     </Router>
+    </EquiposContext.Provider>
     </>
   )
 }
